@@ -107,7 +107,7 @@ export default {
         margin-bottom: 20px;
     }
 
-    button:hover{
+    button:hover, button:active{
         background-color: #FFF;
         color: #08086e;
     }
@@ -133,7 +133,7 @@ export default {
         color: #08086e;
         font-size: 24px;
         position: absolute;
-        top: 150%;
+        top: 100%;
         width: 200px;
         height: 50px;
         transition: ease 0.25s;
@@ -143,7 +143,7 @@ export default {
     }
 
     .copie_move{
-        top: 100%!important;
+        top: 75%!important;
     }
 
     @media (max-width: 520px){
@@ -159,6 +159,19 @@ export default {
         p{
             margin-top: 50px;
             margin-bottom: 50px;
+        }
+
+        .copie_success{
+            top: 150%;
+        }
+
+        .copie_move{
+            top: 100%!important;
+        }
+        
+        button:hover{
+            background-color: #08086e;
+            color: #FFF;
         }
     }
 
