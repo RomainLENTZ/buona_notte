@@ -168,11 +168,6 @@ export default {
         .copie_move{
             top: 100%!important;
         }
-        
-        button:hover{
-            background-color: #08086e;
-            color: #FFF;
-        }
     }
 
 </style>
