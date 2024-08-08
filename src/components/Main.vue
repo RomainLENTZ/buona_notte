@@ -160,14 +160,6 @@ export default {
             margin-top: 50px;
             margin-bottom: 50px;
         }
-
-        .copie_success{
-            top: 150%;
-        }
-
-        .copie_move{
-            top: 100%!important;
-        }
         
         button:hover{
             background-color: #08086e;
