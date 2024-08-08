@@ -6,7 +6,7 @@
     <div :class="{ 'copie_success': true, 'copie_move': isCopied }">Texte copié 🫡</div>   
     <div class="container">
         <p class="clock">{{ currentTime }}</p>
-        <h1>{{ buona_notte == "" ? "Buona notte" : buona_notte }}</h1>
+        <h1 v-html="buona_notte == '' ? 'Buona<br>notte' : buona_notte.replace(/\n/g, '<br>')"></h1>
         <button @click="generateBuonaNotte">Dire bonne nuit 💤</button>
         <button @click="copyText">Copier le texte 📋</button>
     </div>
@@ -133,7 +133,7 @@ export default {
         color: #08086e;
         font-size: 24px;
         position: absolute;
-        top: 100%;
+        top: 150%;
         width: 200px;
         height: 50px;
         transition: ease 0.25s;
@@ -143,7 +143,7 @@ export default {
     }
 
     .copie_move{
-        top: 75%!important;
+        top: 100%!important;
     }
 
     @media (max-width: 520px){
@@ -157,7 +157,7 @@ export default {
         }
 
         p{
-            margin-top: 100px;
+            margin-top: 50px;
             margin-bottom: 50px;
         }
     }
