@@ -107,7 +107,7 @@ export default {
         margin-bottom: 20px;
     }
 
-    button:hover, button:active{
+    button:hover{
         background-color: #FFF;
         color: #08086e;
     }
@@ -167,6 +167,11 @@ export default {
 
         .copie_move{
             top: 100%!important;
+        }
+        
+        button:hover{
+            background-color: #08086e;
+            color: #FFF;
         }
     }
 
