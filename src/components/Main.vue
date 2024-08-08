@@ -157,8 +157,16 @@ export default {
         }
 
         p{
-            margin-top: 50px;
+            margin-top: 20px;
             margin-bottom: 50px;
+        }
+
+        .copie_success{
+            top: 100%;
+        }
+
+        .copie_move{
+            top: 80%!important;
         }
         
         button:hover{
