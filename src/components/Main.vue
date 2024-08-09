@@ -4,7 +4,7 @@
 
 <template>
     <div :class="{ 'copie_success': true, 'copie_move': isCopied }">Texte copié 🫡</div>   
-    <div class="container">
+    <div class="container container-buona_notte">
         <p class="clock">{{ currentTime }}</p>
         <h1 v-html="buona_notte == '' ? 'Buona<br>notte' : buona_notte.replace(/\n/g, '<br>')"></h1>
         <button @click="generateBuonaNotte">Dire bonne nuit 💤</button>
@@ -63,9 +63,9 @@ export default {
             }
             navigator.clipboard.writeText(this.buona_notte)
                 .then(() => {
-                    this.isCopied = true;  // Indique que le texte a été copié
+                    this.isCopied = true;
                     setTimeout(() => {
-                        this.isCopied = false;  // Réinitialise après 2 secondes
+                        this.isCopied = false;
                     }, 2000);
                 })
                 .catch(err => console.error("Erreur lors de la copie : ", err));
@@ -78,13 +78,14 @@ export default {
         }
     },
     mounted() {
-        this.updateTime(); // Met à jour l'heure dès que le composant est monté
-        setInterval(this.updateTime, 60000); // Actualise l'heure toutes les minutes
+        this.updateTime(); 
+        setInterval(this.updateTime, 60000);
     }
 }
 </script>
 
 <style>
+
     .container{
         display: flex;
         justify-content: center;
@@ -94,7 +95,7 @@ export default {
         position: relative;
     }
 
-    button{
+    .container-buona_notte button{
         background-color: #08086e;
         border: none;
         border-radius: 50px;
@@ -107,19 +108,16 @@ export default {
         margin-bottom: 20px;
     }
 
-    button:hover{
+    .container-buona_notte button:hover{
         background-color: #FFF;
         color: #08086e;
     }
 
-    h1{
-        text-align: center;
+    .container-buona_notte h1{
         color: #FFF;
-        margin-bottom:20px;
-        font-size: 50px;
     }
 
-    p{ 
+    .container-buona_notte p{ 
         margin-bottom: 20px;
         font-size: 75px;
         color: #FFF;
@@ -147,16 +145,16 @@ export default {
     }
 
     @media (max-width: 520px){
-        button{
+        .container-buona_notte button{
             width: 100%;
             font-size: 20px;
         }
 
-        h1{
+        .container-buona_notte h1{
             font-size: 40px;
         }
 
-        p{
+        .container-buona_notte p{
             margin-top: 20px;
             margin-bottom: 50px;
         }
@@ -169,7 +167,7 @@ export default {
             top: 80%!important;
         }
         
-        button:hover{
+        .container-buona_notte button:hover{
             background-color: #08086e;
             color: #FFF;
         }

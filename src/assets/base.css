@@ -59,9 +59,8 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 97vh;
   color: var(--color-text);
-  background-color: #08086e;
   transition:
     color 0.5s,
     background-color 0.5s;

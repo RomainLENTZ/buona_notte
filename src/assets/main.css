@@ -30,8 +30,15 @@ body {
 
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+
 h1,
-p {
+p,
+label {
   font-family: "nexaheavy";
 }
 
@@ -39,6 +46,8 @@ button,
 .copie_success {
   font-family: "nexaextra_light";
 }
+
+
 
 @media (hover: hover) {
   a:hover {
