@@ -14,25 +14,35 @@
             <input type="text" v-model="inputPriceValue"> €
         </div>
         <div class="results">
-            <p class="result">Prix <span class="blue">avec</span> TVA : <span v-html="outputWithTVAValue"/>€</p>
-            <p class="result">Prix <span class="red">sans</span> TVA : <span v-html="outputWithoutTVAValue"/>€</p>
+            <p class="result">Prix <span class="blue">avec</span> TVA : 
+                <span class="pointer" v-html="outputWithTVAValue" @click="copyToClipboard(outputWithTVAValue)"/>€</p>
+            <p class="result">Prix <span class="red">sans</span> TVA : 
+                <span class="pointer" v-html="outputWithoutTVAValue" @click="copyToClipboard(outputWithoutTVAValue)"/>€</p>
         </div>
     </div>
+
+    <div :class="{ 'copie_success': true, 'copie_move': isCopied }" class="copie_pop_up black-txt">Texte copié 🫡</div>   
+
 </template>
+
 
 <script>
 export default {
     name: 'Taxe',
     data() {
         return {
-            inputTVAValue: '',
-            inputPriceValue: '',
+            inputTVAValue: '0',
+            inputPriceValue: '0',
             outputWithTVAValue: '',
-            outputWithoutTVAValue: ''
+            outputWithoutTVAValue: '',
+            isCopied: false,
         };
     },
     methods: {
         formatNumber(number) {
+            if (isNaN(number) || number === '') {
+                return '0.00';
+            }
             const formatter = new Intl.NumberFormat('fr-FR', {
                 style: 'decimal',
                 minimumFractionDigits: 2,
@@ -43,20 +53,39 @@ export default {
         updateValues() {
             const price = parseFloat(this.inputPriceValue.replace(/\s/g, '').replace(',', '.'));
             const tva = parseFloat(this.inputTVAValue.replace(/\s/g, ''));
+            if (isNaN(price) || isNaN(tva)) {
+                this.outputWithTVAValue = '0.00';
+                this.outputWithoutTVAValue = '0.00';
+                return;
+            }
             this.outputWithTVAValue = this.formatNumber(price * (1 + tva * 0.01));
             this.outputWithoutTVAValue = this.formatNumber(price * (1 - tva * 0.01));
+        },
+        copyToClipboard(text) {
+            navigator.clipboard.writeText(text.replace('€', ''))
+                .then(() => {
+                    this.isCopied = true;
+                    setTimeout(() => {
+                        this.isCopied = false;
+                    }, 2000);
+                })
         }
     },
     watch: {
-        inputPriceValue(newVal) {
+        inputPriceValue() {
             this.updateValues();
         },
         inputTVAValue() {
             this.updateValues();
         }
+    },
+    mounted() {
+        this.updateValues();
     }
 }
 </script>
+
+
 
 
 <style scoped>
@@ -70,6 +99,7 @@ export default {
     }
     .taxe-container{
         color: #000;
+        position: relative;
     }
 
     .taxe-container div{
@@ -99,4 +129,35 @@ export default {
         width: 75%;
         text-align: right;
     }
+
+    @media (max-width: 520px) {
+        .taxe-container label, div{
+            font-size: 25px;
+        }
+
+        .taxe-container h1{
+            margin-bottom: 55px;
+        }
+
+        .taxe-container .results{
+            margin-top: 55px;
+        }
+
+
+        .taxe-container input{
+            margin-left: 20px;
+            font-size: 25px;
+            font-family: "nexaextra_light";
+            width: 65%;
+            text-align: right;
+        }
+
+        .taxe-container .result{
+            font-size: 40px;
+            text-align: center;
+        }
+
+    }
+
+
 </style>

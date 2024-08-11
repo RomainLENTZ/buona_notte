@@ -43,8 +43,42 @@ label {
 }
 
 button,
+.copie_pop_up {
+  font-family: "nexaextra_light" !important;
+}
+
+.blue-txt {
+  color: #08086e;
+}
+
+.black-txt {
+  color: #000;
+}
+
 .copie_success {
-  font-family: "nexaextra_light";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 24px !important;
+  position: absolute;
+  top: 100%;
+  width: auto;
+  height: auto;
+  padding: 10px 20px;
+  transition: ease 0.25s;
+  background-color: #FFF;
+  left: 50%;
+  transform: translate(-50%);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.copie_move {
+  top: 75% !important;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 
@@ -62,5 +96,17 @@ button,
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .copie_success {
+    width: 207PX;
+    top: 100%;
+  }
+
+  .copie_move {
+    top: 80% !important;
   }
 }

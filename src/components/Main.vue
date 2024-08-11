@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div :class="{ 'copie_success': true, 'copie_move': isCopied }">Texte copié 🫡</div>   
+    <div :class="{ 'copie_success': true, 'copie_move': isCopied }" class="copie_pop_up blue-txt">Texte copié 🫡</div>   
     <div class="container container-buona_notte">
         <p class="clock">{{ currentTime }}</p>
         <h1 v-html="buona_notte == '' ? 'Buona<br>notte' : buona_notte.replace(/\n/g, '<br>')"></h1>
@@ -123,27 +123,6 @@ export default {
         color: #FFF;
     }
 
-    .copie_success{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        color: #08086e;
-        font-size: 24px;
-        position: absolute;
-        top: 100%;
-        width: 200px;
-        height: 50px;
-        transition: ease 0.25s;
-        background-color: #FFF;
-        left: 50%;
-        transform: translate(-50%);
-    }
-
-    .copie_move{
-        top: 75%!important;
-    }
-
     @media (max-width: 520px){
         .container-buona_notte button{
             width: 100%;
@@ -157,14 +136,6 @@ export default {
         .container-buona_notte p{
             margin-top: 20px;
             margin-bottom: 50px;
-        }
-
-        .copie_success{
-            top: 100%;
-        }
-
-        .copie_move{
-            top: 80%!important;
         }
         
         .container-buona_notte button:hover{
