@@ -1,22 +1,23 @@
 <template>
     <div class="rice-container">
-        <h1>Rice cooker 🍙</h1>
+        <h1>Rice Cooker 🍙</h1>
 
         <div class="container-orm"></div>
 
         <div class="rice-form">
             <label>Nombre de portions 🍚</label>
             <input type="text" v-model="inputRiceValue">
-            <span>g</span>
         </div>
-        <div class="results">
-            <p class="result">Rice amount 🍚 <span v-html="outputRice"/> g</p>
-        </div>
-        <div class="results">
-            <p class="result">Water amount 🚰 <span v-html="outputWater"/> g</p>
-        </div>
-        <div class="results">
-            <p class="result">Total amount 🥘 <span v-html="outputTotal"/> g</p>
+        <div class="result-container">
+            <div class="results">
+                <p class="result">Rice amount 🍚 <span v-html="outputRice"/> g</p>
+            </div>
+            <div class="results">
+                <p class="result">Water amount 🚰 <span v-html="outputWater"/> g</p>
+            </div>
+            <div class="results">
+                <p class="result">Total amount 🥘 <span v-html="outputTotal"/> g</p>
+            </div>
         </div>
     </div>
 </template>
@@ -71,7 +72,7 @@ export default {
     }
 
     .rice-container .result{
-        font-size: 75px;
+        font-size: 40px;
     }
     .rice-container{
         color: #000;
@@ -102,34 +103,51 @@ export default {
     .rice-form{
         display: flex;
         width: 100%;
-
     }
 
     @media (max-width: 520px) {
-        .taxe-container label, div{
+        .rice-container label, div{
             font-size: 25px;
         }
 
-        .taxe-container h1{
+        .rice-container h1{
             margin-bottom: 55px;
         }
 
-        .taxe-container .results{
+        .rice-container .results{
             margin-top: 55px;
         }
 
 
-        .taxe-container input{
-            margin-left: 20px;
+        .rice-container input{
+            margin-left: 0px;
+            margin-top: 20px;
             font-size: 25px;
             font-family: "nexaextra_light";
-            width: 65%;
+            width: 25%;
             text-align: right;
+            border : solid #000 2px;
+            border-radius: 0.3rem;
         }
 
-        .taxe-container .result{
-            font-size: 40px;
+        .rice-container .result{
+            font-size: 30px;
             text-align: center;
+        }
+
+        .rice-form{
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rice-form{
+            margin-left:0;
+        }
+
+        .result-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
     }
