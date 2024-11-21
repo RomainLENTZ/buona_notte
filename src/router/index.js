@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '../components/Main.vue'
 import Taxe from '../components/Taxe.vue'
+import Rice from '../components/Rice.vue'
 
 const routes = [
     {
@@ -12,6 +13,11 @@ const routes = [
         path: '/taxe',
         name: 'Taxe',
         component: Taxe
+    },
+    {
+        path: '/rice',
+        name: 'Rice',
+        component: Rice
     }
 ]
 
@@ -28,6 +34,8 @@ router.beforeEach((to, from, next) => {
         case '/taxe':
             document.body.style.backgroundColor = "#FFF";
             break;
+        case '/rice':
+            document.body.style.backgroundColor = "#FF0000"
         default:
             document.body.style.backgroundColor = "#FFF"; // Couleur par défaut
     }
