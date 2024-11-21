@@ -35,9 +35,11 @@ router.beforeEach((to, from, next) => {
             document.body.style.backgroundColor = "#FFF";
             break;
         case '/rice':
-            document.body.style.backgroundColor = "#FF0000"
+            document.body.style.backgroundColor = "#e8e8e8";
+            break;
         default:
-            document.body.style.backgroundColor = "#FFF"; // Couleur par défaut
+            document.body.style.backgroundColor = "#FF0000"; 
+            break;
     }
     next();
 });

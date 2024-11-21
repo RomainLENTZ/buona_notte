@@ -11,11 +11,7 @@
         <div class="result-container">
             <div class="results">
                 <p class="result">Rice amount 🍚 <span v-html="outputRice"/> g</p>
-            </div>
-            <div class="results">
                 <p class="result">Water amount 🚰 <span v-html="outputWater"/> g</p>
-            </div>
-            <div class="results">
                 <p class="result">Total amount 🥘 <span v-html="outputTotal"/> g</p>
             </div>
         </div>
@@ -72,11 +68,15 @@ export default {
     }
 
     .rice-container .result{
-        font-size: 40px;
+        font-size: 45px;
+        text-align: center;
+        margin-top: 30px;
     }
+
     .rice-container{
         color: #000;
         position: relative;
+        margin-top: 50px;
     }
 
     .rice-container div{
@@ -93,31 +93,38 @@ export default {
     .rice-container input{
         border:none;
         border-bottom: solid #000 2px;
+        background-color: #e8e8e8;
         margin-left: 20px;
         font-size: 45px;
         font-family: "nexaextra_light";
-        width: 75%;
+        width: 10%;
         text-align: right;
     }
 
     .rice-form{
         display: flex;
+        align-items: center;
+        justify-content: center;
         width: 100%;
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 768px) {
         .rice-container label, div{
             font-size: 25px;
         }
 
         .rice-container h1{
             margin-bottom: 55px;
+            font-size: 40px;
         }
 
         .rice-container .results{
             margin-top: 55px;
         }
 
+        .rice-container .result{
+            margin-top: 20px;
+        }
 
         .rice-container input{
             margin-left: 0px;
@@ -131,7 +138,7 @@ export default {
         }
 
         .rice-container .result{
-            font-size: 30px;
+            font-size: 26px;
             text-align: center;
         }
 
