@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
     <div :class="{ 'copie_success': true, 'copie_move': isCopied }" class="copie_pop_up blue-txt">Texte copié 🫡</div>   
     <div class="container container-buona_notte">
@@ -88,7 +84,6 @@ export default {
 
     .container{
         display: flex;
-        justify-content: center;
         align-items: center;
         flex-direction: column;
         width: 100%;

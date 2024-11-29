@@ -25,9 +25,10 @@ export default {
     data() {
         return {
             inputRiceValue: '',
+            inputRiceBagValue: '',
             outputWater: '',
             outputRice: '',
-            outputTotal: ''            
+            outputTotal: ''           
         };
     },
     methods: {
@@ -93,7 +94,7 @@ export default {
     .rice-container input{
         border:none;
         border-bottom: solid #000 2px;
-        background-color: #e8e8e8;
+        background-color: #F4D03F;
         margin-left: 20px;
         font-size: 45px;
         font-family: "nexaextra_light";

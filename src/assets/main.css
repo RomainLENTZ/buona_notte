@@ -1,4 +1,5 @@
 @import './base.css';
+@import './ease.css';
 
 #app {
   max-width: 1280px;
@@ -38,6 +39,7 @@ h1 {
 
 h1,
 p,
+a,
 label {
   font-family: "nexaheavy";
 }
@@ -95,7 +97,10 @@ button,
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+  }
+
+  body{
+    padding: 100px;
   }
 }
 
