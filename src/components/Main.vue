@@ -6,15 +6,25 @@
         <button @click="generateBuonaNotte">Dire bonne nuit 💤</button>
         <button @click="copyText">Copier le texte 📋</button>
     </div>
+    <h2>{{ buonaNotteList.length }} / 5 482 080</h2>
+    <div class="buona-notte-list">
+      <div v-for="(item, index) in buonaNotteList" :key="index" class="buona-notte-item">
+        {{ item.form }}
+      </div>
+    </div>
 </template>
 
 <script>
+import {addDocument, getDocuments} from "@/services/firestoreService.js";
+import {confetti} from "@tsparticles/confetti";
+
 export default {
     data() {
         return {
             buona_notte: "",
             isCopied: false,
             currentTime: "",
+            buonaNotteList: [],
         };
     },
     methods: {
@@ -46,12 +56,25 @@ export default {
                             "ttey", "tteyh", "tthey", "thtey", "tteys", "tteyhs", "ttheys", "thteys", "tteyt", "tteyht", "ttheyt", "thteyt", "tteyd", "tteyhd", "ttheyd", "thteyd", 
                             "ttay", "ttayh", "tthay", "thtay", "ttays", "ttayhs", "tthays", "thtays", "ttayt", "ttayht", "tthayt", "thtayt", "ttayd", "ttayhd", "tthayd", "thtayd",
                         ]
+
             var buona = "B"+ ou_sound[Math.floor(Math.random() * ou_sound.length)] + o_sound[Math.floor(Math.random() * o_sound.length)] + na_sound[Math.floor(Math.random() * na_sound.length)];
-
             var notte = "N" + o_sound[Math.floor(Math.random() * o_sound.length)] + te_sound[Math.floor(Math.random() * te_sound.length)]
-
             this.buona_notte = buona + " " + notte
+
+            if (!this.buonaNotteList.includes(this.buona_notte)) {
+                const data = { form: this.buona_notte }
+                addDocument("buona_notte", data)
+                this.buonaNotteList.push(data);
+                confetti({
+                    particleCount: 100,
+                    spread: 360,
+                    origin: { y: 0.6 },
+                    colors: ["#ffffff", "#00FFFF", "#FFFF00"],
+
+                });
+            }
         },
+
         copyText() {
             if (!this.buona_notte) {
                 alert("Il n'y a rien à copier !");
@@ -71,16 +94,50 @@ export default {
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             this.currentTime = `${hours}:${minutes}`;
-        }
+        },
+
+        async loadBuonaNotteList() {
+            try {
+                this.buonaNotteList = await getDocuments("buona_notte");
+                console.log(this.buonaNotteList);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des données :", error);
+            }
+        },
     },
-    mounted() {
+    async mounted() {
         this.updateTime(); 
         setInterval(this.updateTime, 60000);
+
+        await this.loadBuonaNotteList();
     }
 }
 </script>
 
 <style>
+
+    h2{
+      text-align: center;
+      font-family: "nexaheavy";
+      color: white;
+    }
+
+    .buona-notte-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 3 colonnes */
+        gap: 20px; /* Espace entre les items */
+        margin-top: 30px;
+    }
+
+    .buona-notte-item {
+        font-family: 'nexaextra_light';
+        padding: 15px;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        color: white;
+    }
 
     .container{
         display: flex;
@@ -116,6 +173,12 @@ export default {
         margin-bottom: 20px;
         font-size: 75px;
         color: #FFF;
+    }
+
+    @media(min-width: 1024px){
+      .container-buona_notte{
+        padding: 100px;
+      }
     }
 
     @media (max-width: 520px){

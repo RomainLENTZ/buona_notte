@@ -9,10 +9,6 @@
   overflow: hidden;
 }
 
-body {
-  overflow: hidden;
-}
-
 @font-face {
   font-family: 'nexaheavy';
   src: url('fonts/nexa-heavy-webfont.woff2') format('woff2'),
@@ -65,6 +61,7 @@ button,
   font-size: 24px !important;
   position: absolute;
   top: 100%;
+  opacity: 0;
   width: auto;
   height: auto;
   padding: 10px 20px;
@@ -77,12 +74,12 @@ button,
 
 .copie_move {
   top: 75% !important;
+  opacity: 1;
 }
 
 .pointer {
   cursor: pointer;
 }
-
 
 
 @media (hover: hover) {
@@ -92,12 +89,6 @@ button,
 }
 
 @media (min-width: 1024px) {
-
-  #app {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-  }
 
   body{
     padding: 100px;
